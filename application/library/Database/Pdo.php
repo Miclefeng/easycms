@@ -374,6 +374,8 @@ class Database_Pdo implements Database_IDatabase
     private function _execute($sql, array $params = [], $operation = 'query')
     {
         try {
+            $params = array_values($params);
+
             if ('query' === $operation) {
                 $this->statement = $this->pdo->prepare($sql);
 
