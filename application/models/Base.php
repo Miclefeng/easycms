@@ -29,7 +29,6 @@ class BaseModel
 
         $this->_db = Database_DB::getInstance(self::$_mode, self::$_db_conf);
         $this->_db->tableName = static::$tableName;
-
         $this->_db->columns = static::$columns;
     }
 
