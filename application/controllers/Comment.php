@@ -23,11 +23,9 @@ class CommentController extends Yaf_Controller_Abstract
         } else {
             $page = 1;
         }
-        var_dump($page);
         if ($page < 1) $page = 1;
 
         $comment = new CommentModel();
-        var_dump($comment);
         $total = $comment->count();
 
         $pagesize = 20;

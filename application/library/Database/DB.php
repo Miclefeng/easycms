@@ -31,6 +31,7 @@ class Database_DB
         if (!(self::$_instance instanceof self)) {
             self::$_instance = new self();
         }
+        var_dump(self::$_instance);
         return self::$_instance->connect($_mode, $_db_conf);
     }
 
@@ -45,7 +46,6 @@ class Database_DB
         if (empty($_db_conf)) {
             $_db_conf = Yaf_Registry::get("default_db_config");
         }
-        var_dump($_db_conf);
         ($_mode == 1) ? $db_host = $_db_conf['write']['host'] : $db_host = $_db_conf['read']['host'];
 
         $alias = self::_make_alias($_db_conf['driver'], $db_host, $_db_conf['port'], $_db_conf['username'], $_db_conf['database']);
