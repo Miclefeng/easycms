@@ -48,7 +48,7 @@ class Database_DB
 
         ($_mode == 1) ? $db_host = $_db_conf['write']['host'] : $db_host = $_db_conf['read']['host'];
 
-        $alias = self::_make_alias($_db_conf['driver'], $db_host, $_db_conf['port'], $_db_conf['username'], $_db_conf['database']);
+        $alias = self::_alias($_db_conf['driver'], $db_host, $_db_conf['port'], $_db_conf['username'], $_db_conf['database']);
 
         if (isset(self::$_handler[$alias]) && !empty(self::$_handler[$alias])) {
             return self::$_handler[$alias];
@@ -83,7 +83,7 @@ class Database_DB
      * @param $db
      * @return string
      */
-    private static function _make_alias($driver, $host, $port, $user, $db)
+    private static function _alias($driver, $host, $port, $user, $db)
     {
         return implode(":", array($driver, $host, $port, $user, $db));
     }
