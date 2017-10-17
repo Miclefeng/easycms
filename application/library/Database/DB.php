@@ -42,10 +42,10 @@ class Database_DB
      */
     public static function connect($_mode, $_db_conf)
     {
-        var_dump($_mode,$_db_conf);
         if (empty($_db_conf)) {
             $_db_conf = Yaf_Registry::get("default_db_config");
         }
+
         ($_mode == 1) ? $db_host = $_db_conf['write']['host'] : $db_host = $_db_conf['read']['host'];
 
         $alias = self::_make_alias($_db_conf['driver'], $db_host, $_db_conf['port'], $_db_conf['username'], $_db_conf['database']);
@@ -83,7 +83,7 @@ class Database_DB
      * @param $db
      * @return string
      */
-    private function _make_alias($driver, $host, $port, $user, $db)
+    private static function _make_alias($driver, $host, $port, $user, $db)
     {
         return implode(":", array($driver, $host, $port, $user, $db));
     }
@@ -94,7 +94,7 @@ class Database_DB
      * @param $object
      * @return mixed
      */
-    private function _set_handler($alias, $object)
+    private static function _set_handler($alias, $object)
     {
         return self::$_handler[$alias] = $object;
     }
@@ -104,7 +104,7 @@ class Database_DB
      * @param $driver
      * @return bool
      */
-    private function _set_driver($driver)
+    private static function _set_driver($driver)
     {
         self::$_driver = "Database_" . ucfirst($driver);
         return true;
