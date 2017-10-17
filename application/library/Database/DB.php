@@ -9,7 +9,7 @@
 class Database_DB
 {
     /** @var string database driver */
-    private static $_driver;
+    private static $_driver = 'Database_Pdo';
 
     private static $_instance;
 
