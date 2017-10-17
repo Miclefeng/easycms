@@ -18,12 +18,12 @@ class CommentController extends Yaf_Controller_Abstract
     public function indexAction($name = "Stranger")
     {
         error_reporting(E_ALL);
-
         if (!empty($this->getRequest()->getQuery("page"))) {
             $page = intval($this->getRequest()->getQuery("page"));
         } else {
             $page = 1;
         }
+        var_dump($page);
         if ($page < 1) $page = 1;
 
         $comment = new CommentModel();
