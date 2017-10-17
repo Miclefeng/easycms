@@ -58,6 +58,7 @@ class Database_DB
             self::_set_driver($_db_conf['driver']);
         }
 
+        var_dump($_db_conf);
         $db_driver = new self::$_driver();
 
         $db_link = $db_driver->connect([

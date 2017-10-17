@@ -27,9 +27,7 @@ class BaseModel
             self::$_db_conf = static::$_db_conf;
         }
 
-        var_dump(static::$tableName,self::$_db_conf);
         $this->_db = Database_DB::getInstance(self::$_mode, self::$_db_conf);
-        var_dump($this->_db);
         $this->_db->tableName = static::$tableName;
 
         $this->_db->columns = static::$columns;
