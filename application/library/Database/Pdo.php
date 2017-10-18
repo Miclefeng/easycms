@@ -49,9 +49,13 @@ class Database_Pdo implements Database_IDatabase
     public function connect(array $db_conf, $president = true, $charset = 'UTF8', $timeout = 2)
     {
         // TODO: Implement connect() method.
-        if (!$this->_checkConf($db_conf)) return $this->_error;
+        if (!$this->_checkConf($db_conf)) {
+            return $this->_error;
+        }
 
-        if (isset($db_conf['charset']) && !empty($db_conf['charset'])) $charset = $db_conf['charset'];
+        if (isset($db_conf['charset']) && !empty($db_conf['charset'])) {
+            $charset = $db_conf['charset'];
+        }
 
         try {
             $this->pdo = new \PDO(
@@ -68,7 +72,6 @@ class Database_Pdo implements Database_IDatabase
             return $this;
         } catch (Exception $e) {
             return $e->getCode() . " : " . $e->getMessage();
-
         }
     }
 
@@ -374,7 +377,7 @@ class Database_Pdo implements Database_IDatabase
     private function _execute($sql, array $params = [], $operation = 'query')
     {
         try {
-            if(!empty($params)){
+            if (!empty($params)) {
                 $params = array_values($params);
             }
 
