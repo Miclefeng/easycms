@@ -44,7 +44,7 @@ class Database_Pdo implements Database_IDatabase
      * @param bool $president
      * @param string $charset
      * @param int $timeout
-     * @return $this|string
+     * @return mixed
      */
     public function connect(array $db_conf, $president = true, $charset = 'UTF8', $timeout = 2)
     {
@@ -71,7 +71,8 @@ class Database_Pdo implements Database_IDatabase
             );
             return $this;
         } catch (Exception $e) {
-            return $e->getCode() . " : " . $e->getMessage();
+            $this->_error = ['errno' => $e->getCode(),'message' => $e->getMessage()];
+            return false;
         }
     }
 
@@ -79,7 +80,7 @@ class Database_Pdo implements Database_IDatabase
      * 执行sql语句
      * @param $sql
      * @param array $params
-     * @return array
+     * @return mixed
      */
     public function query($sql, array $params = [])
     {
@@ -91,7 +92,7 @@ class Database_Pdo implements Database_IDatabase
      * 插入数据
      * @param $sql
      * @param array $params
-     * @return array
+     * @return mixed
      */
     public function insert($sql, array $params = [])
     {
@@ -103,7 +104,7 @@ class Database_Pdo implements Database_IDatabase
      * 修改数据
      * @param $sql
      * @param array $params
-     * @return array
+     * @return mixed
      */
     public function update($sql, array $params = [])
     {
@@ -115,7 +116,7 @@ class Database_Pdo implements Database_IDatabase
      * 删除数据
      * @param $sql
      * @param array $params
-     * @return array
+     * @return mixed
      */
     public function delete($sql, array $params = [])
     {
@@ -220,7 +221,7 @@ class Database_Pdo implements Database_IDatabase
     /**
      * 数据修改
      * @param $params
-     * @return bool|string
+     * @return bool
      */
     public function save($params)
     {
@@ -247,7 +248,8 @@ class Database_Pdo implements Database_IDatabase
                 $this->update($sql, $column_value);
                 return true;
             } else {
-                return $this->_error = "Invalid params!";
+                $this->_error = ["errno" => 4001,"message" => "Invalid params!"];
+                return false;
             }
         }
 
@@ -283,13 +285,14 @@ class Database_Pdo implements Database_IDatabase
             $this->update($sql, $column_value);
             return true;
         } else {
-            return $this->_error = "Invalid params!";
+            $this->_error = ["errno" => 4001,"message" => "Invalid params!"];
+            return false;
         }
     }
 
     /**
      * 新增数据
-     * @return bool|string
+     * @return bool
      */
     public function create()
     {
@@ -313,14 +316,15 @@ class Database_Pdo implements Database_IDatabase
             $this->insert($sql, $column_value);
             return true;
         } else {
-            return $this->_error = "Invalid params!";
+            $this->_error = ["errno" => 4001,"message" => "Invalid params!"];
+            return false;
         }
     }
 
     /**
      * 删除数据
      * @param $params
-     * @return bool|string
+     * @return bool
      */
     public function destory($params)
     {
@@ -330,7 +334,8 @@ class Database_Pdo implements Database_IDatabase
                 $column_value = $params;
                 $this->delete($sql, $column_value);
             } else {
-                return $this->_error = "Invalid params!";
+                $this->_error = ["errno" => 4001,"message" => "Invalid params!"];
+                return false;
             }
         }
 
@@ -339,7 +344,8 @@ class Database_Pdo implements Database_IDatabase
             $column_value = [$params];
             $this->delete($sql, $column_value);
         } else {
-            return $this->_error = "Invalid params!";
+            $this->_error = ["errno" => 4001 ,"message" => "Invalid params!"];
+            return false;
         }
 
         return true;
@@ -372,7 +378,7 @@ class Database_Pdo implements Database_IDatabase
      * @param $sql
      * @param array $params
      * @param string $operation
-     * @return $this|array
+     * @return $this|boolean
      */
     private function _execute($sql, array $params = [], $operation = 'query')
     {
@@ -404,7 +410,8 @@ class Database_Pdo implements Database_IDatabase
             }
         } catch (PDOException $e) {
             $this->transaction_status = false;
-            return $this->_error = array("errno" => $e->getCode(), "message" => $e->getMessage());
+            $this->_error = ["errno" => $e->getCode(), "message" => $e->getMessage()];
+            return false;
         }
     }
 
@@ -417,7 +424,7 @@ class Database_Pdo implements Database_IDatabase
     {
         foreach ($this->_defultConf as $item) {
             if (!isset($conf[$item]) || empty($conf[$item])) {
-                $this->_error = "Config '" . $item . "' is must have!";
+                $this->_error = ["errno" => 4000,"message" => "Config '" . $item . "' is must have!"];
                 return false;
             }
         }
