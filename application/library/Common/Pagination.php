@@ -31,7 +31,6 @@ class Common_Pagination
 
     public function __construct()
     {
-
     }
 
     /**
