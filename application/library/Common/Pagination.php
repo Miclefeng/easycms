@@ -41,12 +41,12 @@ class Common_Pagination
         if (func_num_args() > 1) {
             $arguments = func_get_args();
             for ($i = 0; $i < func_num_args(); $i++) {
-                $this->setOption(key($arguments[$i]),current($arguments[$i]));
+                $this->setOption('_'.key($arguments[$i]),current($arguments[$i]));
             }
         } else {
             if (is_array(func_get_arg(0))) {
                 foreach (func_get_arg(0) as $k => $item) {
-                    $this->setOption($k,$item);
+                    $this->setOption('_'.$k,$item);
                 }
             }
         }
