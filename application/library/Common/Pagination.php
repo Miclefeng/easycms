@@ -41,14 +41,12 @@ class Common_Pagination
         if (func_num_args() > 1) {
             $arguments = func_get_args();
             for ($i = 0; $i < func_num_args(); $i++) {
-                $set_action = 'set_' . key($arguments[$i]);
-                $this->$set_action(current($arguments[$i]));
+                $this->setOption(key($arguments[$i]),current($arguments[$i]));
             }
         } else {
             if (is_array(func_get_arg(0))) {
                 foreach (func_get_arg(0) as $k => $item) {
-                    $set_action = 'set_' . $k;
-                    $this->$set_action($item);
+                    $this->setOption($k,$item);
                 }
             }
         }
@@ -187,40 +185,26 @@ class Common_Pagination
         return false;
     }
 
-    public function set_base_url($base_url)
-    {
-        return $this->_base_url = $base_url;
-    }
-
-    public function set_pagetotal($pagetotal)
-    {
-        return $this->_pagetotal = $pagetotal;
-    }
-
-    public function set_cur_page($cur_page)
-    {
-        return $this->_cur_page = $cur_page;
-    }
-
-    public function set_pagesize($pagesize)
-    {
-        return $this->_pagesize = $pagesize;
-    }
-
-    public function set_query_str($query_str)
-    {
-        return $this->_query_str = $query_str;
-    }
-
-    public function set_show_link_nums($show_link_nums)
-    {
-        return $this->_show_link_nums = $show_link_nums;
-    }
-
+    /*
+     * 设置分页配置(外部)
+     * @param string 属性名
+     * @param string 属性值
+     * @return bool
+     */
     public function __set($name, $value)
     {
         $this->$name = $value;
         return true;
     }
 
+    /*
+     * 设置分页配置(实例化时)
+     * @param string 属性名
+     * @param string 属性值
+     * @return bool
+     */
+    private function setOption($name,$value)
+    {
+        $this->$name = $value;
+    }
 }
