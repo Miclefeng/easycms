@@ -29,7 +29,6 @@ class Common_Filecache
         }
     }
 
-
     /**
      * Classic
      *
