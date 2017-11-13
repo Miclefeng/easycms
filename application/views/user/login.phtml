@@ -43,7 +43,11 @@
 </body>
 <script type="application/javascript">
     (function () {
-
+        $("#account_submit").on('click',function () {
+            var user = $("input[name=logname]").val();
+            var passwd = $("input[name=logpass]").val();
+            console.log(user,passwd);
+        });
     })();
 </script>
 </html>
