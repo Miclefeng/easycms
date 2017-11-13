@@ -62,6 +62,11 @@ class UserController extends Yaf_Controller_Abstract
         return true;
     }
 
+    public function doLoginAction()
+    {
+
+    }
+
     public function sendMailAction()
     {
         $mail = new PHPMailer(true);
