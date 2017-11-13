@@ -84,15 +84,16 @@
 	line-height: 46px;
 }
 .text{
-	width: 220px;
-	height: 46px;
+	width: 230px;
+	height: 36px;
 	outline: none;
 	display: inline-block;
 	font: 14px "microsoft yahei",Helvetica,Tahoma,Arial,"Microsoft jhengHei";
-	margin-left: 50px;
+	margin: 3px 1px 1px 50px;
 	border: none;
+	border-radius: 6px;
 	background: none;
-	line-height: 46px;
+	line-height: 36px;
 }
 /*///*/
 .mb2{
