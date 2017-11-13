@@ -45,7 +45,9 @@
         $("#account_submit").on('click',function () {
             var user = $("input[name=logname]").val();
             var passwd = $("input[name=logpass]").val();
-            console.log(user,passwd);
+            if(user == null || user == ''){
+
+            }
         });
     })();
 </script>
