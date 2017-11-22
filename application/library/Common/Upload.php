@@ -20,7 +20,6 @@ class Common_Upload
     private $errorNum = 0;  //错误号
     private $errorMess = ""; //用来提供错误报告
 
-
     //1. 指定上传路径， 2，充许的类型， 3，限制大小， 4，是否使用随机文件名称
     //让用户可以不用按位置传参数，后面参数给值不用将前几个参数也提供值
     public function __construct($options = [])
@@ -111,7 +110,6 @@ class Common_Upload
 
             if (!$return)
                 $this->errorMess = $this->getError();
-
 
             return $return;
         }
