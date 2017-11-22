@@ -188,7 +188,7 @@ class Common_Upload
     private function checkFileSize()
     {
         if ($this->fileSize > $this->maxSize) {
-            $this->setOPtion('errorNum', '-2');
+            $this->setOPtion('errorNum', -2);
             return false;
         } else {
             return true;
