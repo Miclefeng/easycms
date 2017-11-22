@@ -47,7 +47,7 @@ class IndexController extends Yaf_Controller_Abstract
 //		$this->getView()->assign("staticPath", STATIC_PATH);
 
 		$upload = new Common_Upload(array('isRandName' => true, 'allowType' => array('gif','jpg','png','jpeg'), 'filePath' => STATIC_PATH.'uploads/'));
-
+        var_dump($upload);
         //4. render by Yaf, 如果这里返回FALSE, Yaf将不会调用自动视图引擎Render模板
         return false;
     }
