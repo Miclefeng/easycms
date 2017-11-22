@@ -49,10 +49,25 @@
             var passwd = $("input[name=logpass]").val();
             if(user == null || user == ''){
 
+                return false;
             }
             if(passwd == null || passwd == ''){
 
+                return false;
             }
+
+            $.ajax({
+                url : "",
+                method : "POST",
+                data : { user : user,passwd : passwd},
+                dataType : "json",
+                success : function (data) {
+
+                },
+                error : function (msg) {
+
+                }
+            });
         });
     })();
 </script>
