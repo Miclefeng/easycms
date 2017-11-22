@@ -59,8 +59,8 @@ class Common_Pagination
      */
     public function create_links($type = 'html')
     {
-        if (!in_array($type, array('html', 'array'))) {
-            return array('type' => 'error', 'msg' => 'Invalid Params!');
+        if (!in_array($type, ['html', 'array'])) {
+            return ['type' => 'error', 'msg' => 'Invalid Params!'];
         }
 
         if (isset($this->_pagesize) && !empty($this->_pagesize)) {

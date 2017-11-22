@@ -10,15 +10,15 @@ class Common_Redis
 {
     private static $_instance;
 
-    private static $_redisHandle = array();
+    private static $_redisHandle = [];
 
-    private static $_defaultconf = array(
+    private static $_defaultconf = [
         'host' => '127.0.0.1',
         'port' => 6379,
         'db' => 0,
         'persistent' => 1,
         'timeout' => 2
-    );
+    ];
 
     protected function __construct()
     {

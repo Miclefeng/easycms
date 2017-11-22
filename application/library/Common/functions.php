@@ -323,7 +323,7 @@ function curl_multi($data, $options = array())
     //获取批处理内容
     foreach ($handles as $i => $ch) {
         $content = curl_multi_getcontent($ch);
-        $contents[$i] = curl_errno($ch) == 0 ? $content : '';
+        $contents[$i] = curl_errno($ch) == 0 ? $content : curl_error($ch);
     }
     //移除批处理句柄
     foreach ($handles as $ch) {
