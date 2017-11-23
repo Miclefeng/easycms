@@ -207,14 +207,10 @@ class Common_Upload
     //设置上传后的文件名称
     private function setNewFileName()
     {
-        if(empty($this->newFileName)){
-            if ($this->isRandName) {
-                $this->setOption('newFileName', $this->proRandName());
-            } else {
-                $this->setOption('newFileName', $this->originName);
-            }
-        }else{
-            $this->newFileName = $this->newFileName.rand(100,999);
+        if ($this->isRandName) {
+            $this->setOption('newFileName', $this->proRandName());
+        } else {
+            $this->setOption('newFileName', $this->originName);
         }
     }
 
