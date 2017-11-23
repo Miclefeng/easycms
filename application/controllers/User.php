@@ -64,7 +64,13 @@ class UserController extends Yaf_Controller_Abstract
 
     public function doLoginAction()
     {
-
+        if (!empty($this->getRequest()->getPost("username"))) {
+            $username = $this->getRequest()->getPost("username");
+        }
+        if (!empty($this->getRequest()->getPost("password"))) {
+            $password = $this->getRequest()->getPost("password");
+        }
+        var_dump($username,$password);
     }
 
     public function sendMailAction()
