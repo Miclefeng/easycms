@@ -53,7 +53,7 @@ class Common_Upload
         $size = $_FILES[$fileField]['size'];
         //获得上传错误代号
         $error = $_FILES[$fileField]['error'];
-        var_dump($_FILES);exit();
+
         //如果上传的是多个文件
         if (is_array($name)) {
             //错误代号必须也是Array，因为一个文件对应一个错误代号
