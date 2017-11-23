@@ -60,6 +60,7 @@ class IndexController extends Yaf_Controller_Abstract
         $upload = new Common_Upload(array('isRandName' => true, 'allowType' => array('gif','jpg','png','jpeg'), 'filePath' => UPLOAD_PATH));
         if($upload->uploadFile('upload')){
             var_dump($upload->getNewFileName());
+            echo '<img src="'.STATIC_PATH.'/uploads/'.$upload->getNewFileName().'" />';
         }else{
             var_dump($upload->getErrorMsg());
         }
