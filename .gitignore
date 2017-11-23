@@ -1,6 +1,6 @@
 gitpull.sh
-public/webhooks.php
 public/statics/download/*
+public/statics/uploads/*
 application/library/vendor/*.php
 application/library/vendor/*
 .idea/workspace.xml
