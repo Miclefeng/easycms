@@ -57,15 +57,15 @@
             }
 
             $.ajax({
-                url : "",
+                url : "/user/doLogin",
                 method : "POST",
                 data : { user : user,passwd : passwd},
                 dataType : "json",
                 success : function (data) {
-
+                    console.log(data);
                 },
                 error : function (msg) {
-
+                    alert(msg);
                 }
             });
         });
