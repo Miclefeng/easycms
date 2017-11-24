@@ -57,7 +57,7 @@ class IndexController extends Yaf_Controller_Abstract
 
     public function doUploadAction()
     {
-        $upload = new Common_Upload(array('isRandName' => true, 'allowType' => array('gif','jpg','png','jpeg'), 'filePath' => UPLOAD_PATH));
+        $upload = new Common_Upload(['isRandName' => true, 'allowType' => ['gif','jpg','png','jpeg'], 'filePath' => UPLOAD_PATH]);
         if($upload->uploadFile('upload')){
             var_dump($upload->getNewFileName());
             echo '<img src="'.STATIC_PATH.'/uploads/'.$upload->getNewFileName().'" />';
