@@ -3,6 +3,7 @@
         "box/spout": "^2.7",
         "phpmailer/phpmailer": "^6.0",
         "respect/validation": "^1.1",
-        "php-curl-class/php-curl-class": "@dev"
+        "php-curl-class/php-curl-class": "@dev",
+        "elasticsearch/elasticsearch": "~6.0"
     }
 }
