@@ -173,7 +173,7 @@ class Common_Upload
             $this->setOption('errorNum', -5);
             return false;
         }
-        if (!file_exists($this->filePath) || !is_writable($this->filePath)) {
+        if (!is_dir($this->filePath) || !is_writable($this->filePath)) {
             if (!@mkdir($this->filePath, 0755)) {
                 $this->setOption('errorNum', -4);
                 return false;
