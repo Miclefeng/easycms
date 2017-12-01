@@ -70,7 +70,7 @@ class UserController extends Yaf_Controller_Abstract
         if (!empty($this->getRequest()->getPost("password"))) {
             $password = $this->getRequest()->getPost("password");
         }
-        var_dump($username,$password);
+
     }
 
     public function sendMailAction()
