@@ -35,7 +35,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
      */
     public function _initPlugin(Yaf_Dispatcher $dispatcher)
     {
-        $config = \Yaf\Registry::get('config');
+        $config = Yaf_Registry::get('config');
         $withoutLayouts = array();
         if (isset($config['application']['view']['withoutLayouts'])) {
             $withoutLayouts = array_filter(explode(',', $config['application']['view']['withoutLayouts']));
