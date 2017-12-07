@@ -68,8 +68,7 @@ class BaseModel
         if(in_array($name,array('create','save'))){
             foreach($this->_db->fields as $k => $item){
                 if(!isset(static::$columns[$k])){
-                    echo 'The column '.$k.' not exists in table '.static::$tableName;
-                    return false;
+                    throw new Exception('The column '.$k.' not exists in table '.static::$tableName);
                 }
             }
         }
