@@ -19,11 +19,11 @@ class BaseModel
 
     public function __construct()
     {
-        if(isset(static::$_mode)){
+        if(isset(static::$_mode) && !empty(static::$_mode)){
             self::$_mode = static::$_mode;
         }
 
-        if(isset(static::$_db_conf)){
+        if(isset(static::$_db_conf) && !empty(static::$_db_conf)){
             self::$_db_conf = static::$_db_conf;
         }
 
