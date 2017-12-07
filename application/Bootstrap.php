@@ -26,7 +26,6 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _initLoader()
     {
         Yaf_Loader::import('vendor/autoload.php');
-        Yaf_Loader::import('Common/functions.php');
     }
 
     /**
