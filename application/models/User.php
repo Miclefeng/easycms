@@ -1,6 +1,6 @@
 <?php
 
-class UserModel extends Model_Model
+class UserModel extends Model_Base
 {
     protected static $tableName = 'user';
 

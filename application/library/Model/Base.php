@@ -5,7 +5,7 @@
  * @desc 实例化数据库类
  * @author root
  */
-class Model
+class Model_Base
 {
     protected $_db;
 
