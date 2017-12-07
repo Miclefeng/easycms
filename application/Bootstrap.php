@@ -16,8 +16,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _initConfig()
     {
         $arrConfig = Yaf_Application::app()->getConfig();
-        Yaf_Registry::set('default_app_config', $arrConfig['application']);
-        Yaf_Registry::set('default_db_config', $arrConfig['database']);
+        Yaf_Registry::set('app_config', $arrConfig['application']);
+        Yaf_Registry::set('db_config', $arrConfig['database']);
     }
 
     /**
@@ -35,10 +35,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
      */
     public function _initPlugin(Yaf_Dispatcher $dispatcher)
     {
-        $config = Yaf_Registry::get('config');
+        $config = Yaf_Registry::get('app_config');
         $withoutLayouts = array();
-        if (isset($config['application']['view']['withoutLayouts'])) {
-            $withoutLayouts = array_filter(explode(',', $config['application']['view']['withoutLayouts']));
+        if (isset($config['view']['withoutLayouts'])) {
+            $withoutLayouts = array_filter(explode(',', $config['view']['withoutLayouts']));
         }
         $layout = new LayoutPlugin('layout/layout.phtml');
         $layout->withoutLayouts = $withoutLayouts;   //本配置中设置不需要布局文件的url

@@ -43,7 +43,7 @@ class Database_DB
     public static function connect($_mode, $_db_conf)
     {
         if (empty($_db_conf)) {
-            $_db_conf = Yaf_Registry::get("default_db_config");
+            $_db_conf = Yaf_Registry::get("db_config");
         }
 
         ($_mode == 1) ? $db_host = $_db_conf['write']['host'] : $db_host = $_db_conf['read']['host'];
