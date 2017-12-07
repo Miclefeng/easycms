@@ -3,7 +3,7 @@
 /**
  * @name Model
  * @desc 实例化数据库类
- * @author root
+ * @author miclefeng
  */
 class Model_Base
 {
