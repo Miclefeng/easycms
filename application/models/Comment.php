@@ -11,6 +11,10 @@ class CommentModel extends Model_Base
         'state' => 0
     ];
 
+    protected static $_mode;
+
+    protected static $_db_conf;
+
     public function count()
     {
         return $this->_db->count();

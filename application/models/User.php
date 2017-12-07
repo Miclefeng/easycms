@@ -13,6 +13,10 @@ class UserModel extends Model_Base
         'last_login_time' => 1
     ];
 
+    protected static $_mode;
+
+    protected static $_db_conf;
+
     public function count()
     {
         return $this->_db->count();
