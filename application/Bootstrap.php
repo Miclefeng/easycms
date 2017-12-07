@@ -40,7 +40,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         if (isset($config['application']['view']['withoutLayouts'])) {
             $withoutLayouts =  array_filter(explode(',', $config['application']['view']['withoutLayouts']));
         }
-        $layout = new LayoutPlugin('layout.phtml');
+        $layout = new LayoutPlugin('layout/layout.phtml');
         $layout->withoutLayouts = $withoutLayouts;   //本配置中设置不需要布局文件的url
         $dispatcher->registerPlugin($layout);
     }
