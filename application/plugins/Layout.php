@@ -38,11 +38,11 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
             foreach ($this->withoutLayouts as $url) {
                 $urlArr = explode('/', trim($url));
                 $count = count($urlArr);
-                if (($count == 1) && ($module == $urlArr[0]) || ($controller == $urlArr[0])) {
+                if ($count == 1 && ($module == $urlArr[0] || $controller == $urlArr[0])) {
                     return true;
-                } elseif (($count == 2) && ($module == $urlArr[0]) && ($controller == $urlArr[1])) {
+                } elseif ($count == 2 && $module == $urlArr[0] && $controller == $urlArr[1]) {
                     return true;
-                } elseif (($count == 3) && ($module == $urlArr[0]) && ($controller == $urlArr[1]) && ($action == $urlArr[2])) {
+                } elseif ($count == 3 && $module == $urlArr[0] && $controller == $urlArr[1] && $action == $urlArr[2]) {
                     return true;
                 }
             }
