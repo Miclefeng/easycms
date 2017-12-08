@@ -40,7 +40,7 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
                 $count = count($urlArr);
                 if ($count == 1 && ($module == $urlArr[0] || $controller == $urlArr[0])) {
                     return true;
-                } elseif ($count == 2 && $module == $urlArr[0] && $controller == $urlArr[1]) {
+                } elseif ($count == 2 && $controller == $urlArr[0] && $action == $urlArr[1]) {
                     return true;
                 } elseif ($count == 3 && $module == $urlArr[0] && $controller == $urlArr[1] && $action == $urlArr[2]) {
                     return true;
