@@ -55,6 +55,7 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
         $response->clearBody();
         /* wrap it in the layout */
         $layout = new Yaf_View_Simple($this->_layoutDir);
+        var_dump($layout);
         $layout->content = $body;    //相当于$layout->assign('content', $body);
         $layout->assign('layout', $this->_layoutVars);
 
