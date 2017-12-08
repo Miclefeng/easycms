@@ -11,7 +11,7 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
     public function __construct($layoutFile, $layoutDir = null)
     {
         $this->_layoutFile = $layoutFile;
-        $this->_layoutDir = ($layoutDir) ? $layoutDir : APP_PATH . 'views/';
+        $this->_layoutDir = ($layoutDir) ? $layoutDir : APP_PATH . '/views/';
     }
 
     public function __set($name, $value)
@@ -59,7 +59,7 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
         $layout->assign('layout', $this->_layoutVars);
 
         //设置响应的body
-        $response->setBody($layout->render($this->_layoutDir.$this->_layoutFile));
+        $response->setBody($layout->render($this->_layoutFile));
     }
 
     public function preDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
