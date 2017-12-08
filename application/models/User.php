@@ -22,9 +22,15 @@ class UserModel extends Model_Base
         return $this->_db->count();
     }
 
-    public function get_list($pagesize,$offset)
+    public function get_list($pagesize, $offset)
     {
-        return $this->_db->query("SELECT * FROM `".$this->table_name()."` LIMIT {$offset},{$pagesize}")->getAll();
+        return $this->_db->query("SELECT * FROM `" . $this->table_name() . "` LIMIT {$offset},{$pagesize}")->row_all();
+    }
+
+    // 根据用户名和密码获取用户信息
+    public function get_info($username, $passwd)
+    {
+        return $this->_db->query("SELECT * FROM  `" . $this->table_name() . "` WHERE `username`='{$username}' AND `password`='{$passwd}'")->row_one();
     }
 
     public function table_name()

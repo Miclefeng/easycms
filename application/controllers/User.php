@@ -5,6 +5,7 @@
  * @author micle
  * @desc 用户控制器
  */
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -71,6 +72,12 @@ class UserController extends Yaf_Controller_Abstract
             $password = $this->getRequest()->getPost("password");
         }
 
+        if (empty($username) || empty($password)) {
+            return false;
+        }
+        $user = new UserModel();
+        $user_info = $user->get_info($username, md5($password));
+        var_dump($user_info);
     }
 
     public function sendMailAction()
