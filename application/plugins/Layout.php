@@ -55,12 +55,11 @@ class LayoutPlugin extends Yaf_Plugin_Abstract
         $response->clearBody();
         /* wrap it in the layout */
         $layout = new Yaf_View_Simple($this->_layoutDir);
-        var_dump($layout);
         $layout->content = $body;    //相当于$layout->assign('content', $body);
         $layout->assign('layout', $this->_layoutVars);
 
         //设置响应的body
-        $response->setBody($layout->render($this->_layoutFile));
+        $response->setBody($layout->render($this->_layoutDir.$this->_layoutFile));
     }
 
     public function preDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
