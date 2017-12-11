@@ -428,7 +428,6 @@ class Database_Pdo implements Database_IDatabase
                 return false;
             }
         }
-
         return true;
     }
 }
