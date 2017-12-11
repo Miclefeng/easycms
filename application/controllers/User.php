@@ -77,7 +77,7 @@ class UserController extends Yaf_Controller_Abstract
         }
         $user = new UserModel();
         $user_info = $user->get_info($username, md5($password));
-        var_dump($user_info);
+        echo json_encode($user_info,JSON_UNESCAPED_UNICODE);
         return false;
     }
 
