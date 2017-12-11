@@ -78,6 +78,7 @@ class UserController extends Yaf_Controller_Abstract
         $user = new UserModel();
         $user_info = $user->get_info($username, md5($password));
         var_dump($user_info);
+        return false;
     }
 
     public function sendMailAction()
