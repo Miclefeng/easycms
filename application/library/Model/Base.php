@@ -65,7 +65,7 @@ class Model_Base
     public function __call($name, $params)
     {
         // TODO: Implement __call() method.
-        if(in_array($name,array('create','save'))){
+        if(in_array($name,['create','save'])){
             foreach($this->_db->fields as $k => $item){
                 if(!isset(static::$columns[$k])){
                     throw new Exception('The column '.$k.' not exists in table '.static::$tableName);
