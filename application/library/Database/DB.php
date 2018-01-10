@@ -50,7 +50,7 @@ class Database_DB
 
         $alias = self::_alias($_db_conf['driver'], $db_host, $_db_conf['port'], $_db_conf['username'], $_db_conf['database']);
 
-        if (isset(self::$_handler[$alias]) && !empty(self::$_handler[$alias])) {
+        if (isset(self::$_handler[$alias]) && is_resource(self::$_handler[$alias])) {
             return self::$_handler[$alias];
         }
 
