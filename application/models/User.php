@@ -2,9 +2,9 @@
 
 class UserModel extends Model_Base
 {
-    protected static $tableName = 'user';
+    protected static $_tableName = 'user';
 
-    protected static $columns = [
+    protected static $_columns = [
         'id' => 1,
         'username' => 1,
         'password' => 1,
@@ -35,6 +35,6 @@ class UserModel extends Model_Base
 
     public function table_name()
     {
-        return self::$tableName;
+        return self::$_tableName;
     }
 }

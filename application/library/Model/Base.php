@@ -9,9 +9,9 @@ class Model_Base
 {
     protected $_db;
 
-    protected static $tableName;
+    protected static $_tableName;
 
-    protected static $columns = [];
+    protected static $_columns = [];
 
     protected static $_mode = 1;
 
@@ -28,8 +28,8 @@ class Model_Base
         }
 
         $this->_db = Database_DB::getInstance(self::$_mode, self::$_db_conf);
-        $this->_db->tableName = static::$tableName;
-        $this->_db->columns = static::$columns;
+        $this->_db->tableName = static::$_tableName;
+        $this->_db->columns = static::$_columns;
     }
 
     /**
@@ -67,8 +67,8 @@ class Model_Base
         // TODO: Implement __call() method.
         if(in_array($name,['create','save'])){
             foreach($this->_db->fields as $k => $item){
-                if(!isset(static::$columns[$k])){
-                    throw new Exception('The column '.$k.' not exists in table '.static::$tableName);
+                if(!isset(static::$_columns[$k])){
+                    throw new Exception('The column '.$k.' not exists in table '.static::$_tableName);
                 }
             }
         }

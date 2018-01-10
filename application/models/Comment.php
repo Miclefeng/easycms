@@ -2,9 +2,9 @@
 
 class CommentModel extends Model_Base
 {
-    protected static $tableName = 'comment';
+    protected static $_tableName = 'comment';
 
-    protected static $columns = [
+    protected static $_columns = [
         'id' => 1,
         'username' => 1,
         'content' => 1,
@@ -32,6 +32,6 @@ class CommentModel extends Model_Base
 
     public function table_name()
     {
-        return self::$tableName;
+        return self::$_tableName;
     }
 }
