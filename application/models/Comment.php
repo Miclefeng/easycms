@@ -37,6 +37,6 @@ class CommentModel extends Model_Base
 
     public function get_last_insert_id()
     {
-        return $this->_db->last_inser_id();
+        return $this->_db->last_insert_id();
     }
 }

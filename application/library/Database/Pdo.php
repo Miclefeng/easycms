@@ -300,8 +300,6 @@ class Database_Pdo implements Database_IDatabase
         $sql .= "INSERT INTO `" . $this->tableName . "` (";
         $i_sql = "";
         $v_sql = "";
-        $column_value = $this->fields;
-        $this->fields = [];
 
         foreach ($this->fields as $k => $v) {
             $i_sql .= "`{$k}`,";
@@ -311,6 +309,7 @@ class Database_Pdo implements Database_IDatabase
 
         $sql .= rtrim($i_sql, ",") . ") VALUES (" . rtrim($v_sql, ",") . ")";
 
+        $this->fields = [];
 
         if (!empty($i_sql) && !empty($v_sql) && !empty($column_value)) {
             $this->insert($sql, $column_value);
