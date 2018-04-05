@@ -298,19 +298,23 @@ class Database_Pdo implements Database_IDatabase
     {
         $sql = "";
         $sql .= "INSERT INTO `" . $this->tableName . "` (";
-        $i_sql = "";
-        $v_sql = "";
-        $column_value = [];
-
-        foreach ($this->fields as $k => $v) {
-            $i_sql .= "`{$k}`,";
-            $v_sql .= "?,";
-            $column_value[] = $v;
-        }
-
-        $sql .= rtrim($i_sql, ",") . ") VALUES (" . rtrim($v_sql, ",") . ")";
-
+//        $i_sql = "";
+//        $v_sql = "";
+        $column_value = $this->fields;
         $this->fields = [];
+
+//        foreach ($this->fields as $k => $v) {
+//            $i_sql .= "`{$k}`,";
+//            $v_sql .= "?,";
+//            $column_value[] = $v;
+//        }
+        $i_columns = array_keys($column_value);
+        $i_sql = "`".implode("`,`", $i_columns)."`";
+        $v_sql = ":".implode(",:", $i_columns);
+
+//        $sql .= rtrim($i_sql, ",") . ") VALUES (" . rtrim($v_sql, ",") . ")";
+        $sql .= $i_sql.") VALUES (".$v_sql.")";
+
 
         if (!empty($i_sql) && !empty($v_sql) && !empty($column_value)) {
             $this->insert($sql, $column_value);
