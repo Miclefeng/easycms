@@ -34,4 +34,9 @@ class CommentModel extends Model_Base
     {
         return self::$_tableName;
     }
+
+    public function get_last_insert_id()
+    {
+        return $this->_db->last_inser_id();
+    }
 }
