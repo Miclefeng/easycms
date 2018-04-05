@@ -6,3 +6,4 @@ application/library/vendor/*
 .idea/workspace.xml
 public/statics/backend/*
 conf/application.ini
+conf/*
