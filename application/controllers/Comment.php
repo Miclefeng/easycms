@@ -64,7 +64,7 @@ class CommentController extends Yaf_Controller_Abstract
         $comment->content = 'this is a insert test!';
         $comment->create();
         var_dump($comment->get_last_insert_id());
-
+        return false;
     }
 
     public function publishAction()
