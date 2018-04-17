@@ -386,19 +386,16 @@ class Database_Pdo implements Database_IDatabase
                 $params = array_values($params);
             }
 
-            if ('query' === $operation) {
-                $this->statement = $this->pdo->prepare($sql);
+            $this->statement = $this->pdo->prepare($sql);
 
+            if ('query' === $operation) {
                 if (!empty($params)) {
                     $this->statement->execute($params);
                 } else {
                     $this->statement->execute();
                 }
-
                 return $this;
             } else {
-                $this->statement = $this->pdo->prepare($sql);
-
                 if (!empty($params)) {
                     $res = $this->statement->execute($params);
                 } else {
