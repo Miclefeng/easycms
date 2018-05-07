@@ -71,7 +71,7 @@ class Database_Pdo implements Database_IDatabase
             );
             return $this;
         } catch (Exception $e) {
-            $this->_error = ['errno' => $e->getCode(),'message' => $e->getMessage()];
+            $this->_error = ['errno' => $e->getCode(), 'message' => $e->getMessage()];
             return false;
         }
     }
@@ -248,7 +248,7 @@ class Database_Pdo implements Database_IDatabase
                 $this->update($sql, $column_value);
                 return true;
             } else {
-                $this->_error = ["errno" => 4001,"message" => "Invalid params!"];
+                $this->_error = ["errno" => 4001, "message" => "Invalid params!"];
                 return false;
             }
         }
@@ -285,7 +285,7 @@ class Database_Pdo implements Database_IDatabase
             $this->update($sql, $column_value);
             return true;
         } else {
-            $this->_error = ["errno" => 4001,"message" => "Invalid params!"];
+            $this->_error = ["errno" => 4001, "message" => "Invalid params!"];
             return false;
         }
     }
@@ -315,7 +315,7 @@ class Database_Pdo implements Database_IDatabase
             $this->insert($sql, $column_value);
             return true;
         } else {
-            $this->_error = ["errno" => 4001,"message" => "Invalid params!"];
+            $this->_error = ["errno" => 4001, "message" => "Invalid params!"];
             return false;
         }
     }
@@ -333,7 +333,7 @@ class Database_Pdo implements Database_IDatabase
                 $column_value = $params;
                 $this->delete($sql, $column_value);
             } else {
-                $this->_error = ["errno" => 4001,"message" => "Invalid params!"];
+                $this->_error = ["errno" => 4001, "message" => "Invalid params!"];
                 return false;
             }
         }
@@ -343,7 +343,7 @@ class Database_Pdo implements Database_IDatabase
             $column_value = [$params];
             $this->delete($sql, $column_value);
         } else {
-            $this->_error = ["errno" => 4001 ,"message" => "Invalid params!"];
+            $this->_error = ["errno" => 4001, "message" => "Invalid params!"];
             return false;
         }
 
@@ -420,7 +420,7 @@ class Database_Pdo implements Database_IDatabase
     {
         foreach ($this->_defultConf as $item) {
             if (!isset($conf[$item]) || empty($conf[$item])) {
-                $this->_error = ["errno" => 4000,"message" => "Config '" . $item . "' is must have!"];
+                $this->_error = ["errno" => 4000, "message" => "Config '" . $item . "' is must have!"];
                 return false;
             }
         }
