@@ -22,7 +22,9 @@ class CommentModel extends Model_Base
 
     public function get_list($size,$offset = 0)
     {
-        return $this->_db->query("SELECT * FROM `".$this->table_name()."` LIMIT {$offset},{$size}")->row_all();
+        $sql = "SELECT * FROM (SELECT `id` FROM `".$this->table_name()."` LIMIT {$offset},{$size}) a LEFT JOIN `".$this->table_name()."` b ON a.id=b.id";
+        var_dump($sql);
+        return $this->_db->query($sql)->row_all();
     }
 
     public function publish($data)
@@ -33,5 +35,10 @@ class CommentModel extends Model_Base
     public function table_name()
     {
         return self::$_tableName;
+    }
+
+    public function get_last_insert_id()
+    {
+        return $this->_db->last_insert_id();
     }
 }

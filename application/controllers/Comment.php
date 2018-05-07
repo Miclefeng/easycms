@@ -59,7 +59,12 @@ class CommentController extends Yaf_Controller_Abstract
 
     public function editAction()
     {
-
+        $comment = new CommentModel();
+        $comment->username = 'miclefengzss2018';
+        $comment->content = 'this is a insert test!';
+        $comment->create();
+//        var_dump($comment->get_last_insert_id());
+        return false;
     }
 
     public function publishAction()

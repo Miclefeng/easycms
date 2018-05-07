@@ -300,7 +300,6 @@ class Database_Pdo implements Database_IDatabase
         $sql .= "INSERT INTO `" . $this->tableName . "` (";
         $i_sql = "";
         $v_sql = "";
-        $column_value = [];
 
         foreach ($this->fields as $k => $v) {
             $i_sql .= "`{$k}`,";
@@ -387,19 +386,16 @@ class Database_Pdo implements Database_IDatabase
                 $params = array_values($params);
             }
 
-            if ('query' === $operation) {
-                $this->statement = $this->pdo->prepare($sql);
+            $this->statement = $this->pdo->prepare($sql);
 
+            if ('query' === $operation) {
                 if (!empty($params)) {
                     $this->statement->execute($params);
                 } else {
                     $this->statement->execute();
                 }
-
                 return $this;
             } else {
-                $this->statement = $this->pdo->prepare($sql);
-
                 if (!empty($params)) {
                     $res = $this->statement->execute($params);
                 } else {
