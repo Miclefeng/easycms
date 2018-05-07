@@ -20,6 +20,8 @@ class Common_Redis
         'timeout' => 2
     ];
 
+    private $_conConf;
+
     protected function __construct()
     {
         if (!extension_loaded('redis')) {
@@ -35,7 +37,7 @@ class Common_Redis
     public static function connect()
     {
         // instance
-        (is_null(self::$_instance)) && self::$_instance = new self();
+        (!(self::$_instance instanceof self)) && self::$_instance = new self();
 
         // basic parameter chk
         if (($args_num = func_num_args()) === 1 && is_array($param = func_get_arg(0))) {
@@ -77,7 +79,7 @@ class Common_Redis
             $this->_conConf['timeout'] = self::$_defaultconf['timeout'];
         }
 
-        $k = implode("_", array($this->_conConf['host'], $this->_conConf['port'], $this->_conConf['db'], $this->_conConf['persistent']));
+        $k = $this->_make_redis_key([$this->_conConf['host'], $this->_conConf['port']]);
 
         if (!isset(self::$_redisHandle[$k]) || get_resource_type(self::$_redisHandle[$k]) !== 'redis') {
             $redis = new \Redis();
@@ -93,5 +95,15 @@ class Common_Redis
         }
 
         return self::$_redisHandle[$k];
+    }
+
+    /**
+     * 生成 redis instance key
+     * @param array $data
+     * @return string
+     */
+    private function _make_redis_key($data = [])
+    {
+        return ucwords(implode("_", $data));
     }
 }
