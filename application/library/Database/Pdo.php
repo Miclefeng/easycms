@@ -357,7 +357,7 @@ class Database_Pdo implements Database_IDatabase
      */
     public function getFields($name)
     {
-        return $this->$name;
+        return $this->fields[$name];
     }
 
     /**
