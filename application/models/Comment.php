@@ -1,6 +1,6 @@
 <?php
 
-class CommentModel extends Model_Base
+class CommentModel extends ModelBase
 {
     protected static $_tableName = 'comment';
 

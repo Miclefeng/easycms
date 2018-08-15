@@ -5,7 +5,7 @@
  * @desc 实例化数据库类
  * @author miclefeng
  */
-class Model_Base
+class ModelBase
 {
     protected $_db;
 
