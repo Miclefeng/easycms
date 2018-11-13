@@ -1,11 +1,11 @@
 gitpull.sh
-public/statics/download/*
-public/statics/uploads/*
-application/library/vendor/*.php
-application/library/vendor/*
+public/statics/download
+public/statics/uploads
+application/library/vendor
 .idea/workspace.xml
-public/statics/backend/*
+public/statics/backend
 conf/application.ini
-conf/*
+conf
 *.ini
+.idea
 
